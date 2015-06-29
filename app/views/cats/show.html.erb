@@ -7,7 +7,7 @@
   <li>Color: <%= @cat.color %></li>
   <li>Personality: <%= @cat.personality %></li>
   <li>Total number of cafe visits: <%= @cat.visits.count %></li>
-  <% if @cat.visits.count != 0 %>
+  <% if @cat.visits.count > 0 %>
     <li><p>Number of visits per cafe:</p>
       <ul>
         <% @cat.lifetime_cafes.each do |cafe| %>
