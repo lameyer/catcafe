@@ -1,0 +1,6 @@
+<h1>Select a Café to visit!</h1>
+<ul>
+  <% @cafes.each do |cafe| %>
+  <li><%= link_to cafe.name, cafe %></li>
+  <% end %>
+</ul>
