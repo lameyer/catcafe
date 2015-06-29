@@ -6,6 +6,9 @@
   <li>Breed: <%= @cat.breed %></li>
   <li>Color: <%= @cat.color %></li>
   <li>Personality: <%= @cat.personality %></li>
+  <% if @cat.current_cafe %>
+    <li>Current cafe: <%= @cat.current_cafe.name %></li>
+  <% end %>
   <li>Total number of cafe visits: <%= @cat.visits.count %></li>
   <% if @cat.visits.count > 0 %>
     <li><p>Number of visits per cafe:</p>
