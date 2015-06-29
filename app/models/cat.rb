@@ -9,4 +9,16 @@ class Cat < ActiveRecord::Base
   def current_visit
     visits.where("visits.exited_at"=> nil).first
   end
+
+  def leave_current_cafe!
+    if current_visit
+      current_visit.update(exited_at: Time.now)
+    end
+  end
+
+  def switch_cafe!(cafe)
+    leave_current_cafe!
+    visit = Visit.create(cat: self, cafe: cafe, entered_at: Time.now)
+  end
+
 end
