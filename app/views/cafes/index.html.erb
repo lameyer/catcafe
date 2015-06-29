@@ -4,3 +4,10 @@
   <li><%= link_to cafe.name, cafe %></li>
   <% end %>
 </ul>
+
+<h1>Select a Cat to learn about!</h1>
+<ul>
+  <% @cats.each do |cat| %>
+  <li><%= link_to cat.name, cat %></li>
+  <% end %>
+</ul>

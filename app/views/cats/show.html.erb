@@ -1,0 +1,19 @@
+<h1><%= @cat.name %></h1>
+
+<ul>
+  <li>Age: <%= @cat.age %></li>
+  <li>Gender: <%= @cat.gender %></li>
+  <li>Breed: <%= @cat.breed %></li>
+  <li>Color: <%= @cat.color %></li>
+  <li>Personality: <%= @cat.personality %></li>
+  <li>Total number of cafe visits: <%= @cat.visits.count %></li>
+  <% if @cat.visits.count != 0 %>
+    <li><p>Number of visits per cafe:</p>
+      <ul>
+        <% @cat.lifetime_cafes.each do |cafe| %>
+        <li><%= link_to cafe.name, cafe %>: <%= @cat.visits_to_cafe(cafe).count %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

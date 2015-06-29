@@ -21,4 +21,8 @@ class Cat < ActiveRecord::Base
     visit = Visit.create(cat: self, cafe: cafe, entered_at: Time.now)
   end
 
+  def visits_to_cafe(cafe)
+    visits.where("visits.cafe_id"=> cafe)
+  end
+
 end
