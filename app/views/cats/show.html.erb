@@ -7,7 +7,7 @@
   <li>Color: <%= @cat.color %></li>
   <li>Personality: <%= @cat.personality %></li>
   <% if @cat.current_cafe %>
-    <li>Current cafe: <%= @cat.current_cafe.name %></li>
+    <li>Current cafe: <%= link_to @cat.current_cafe.name, @cat.current_cafe %></li>
   <% end %>
   <li>Total number of cafe visits: <%= @cat.visits.count %></li>
   <% if @cat.visits.count > 0 %>
