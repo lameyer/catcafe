@@ -28,7 +28,12 @@ class Cat < ActiveRecord::Base
   end
 
   def switch_cafe_if_time!
-    switch_cafe!(Cafe.order("random()").first) if time_to_switch?
+    return unless time_to_switch?
+    cafes = Cafe.order("random()")
+    if current_cafe
+      cafes = cafes.where.not(id: current_cafe.id)
+    end
+    switch_cafe!(cafes.first)
   end
 
 end
