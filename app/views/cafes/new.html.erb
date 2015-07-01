@@ -1,0 +1,11 @@
+<h1>Create a New Cafe</h1>
+
+<%= form_for @cafe, url: {action: "create"} do |f| %>
+  <p>
+    <%= label_tag(:name, "Name:") %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Create Cafe" %>
+  </p>
+<% end %>

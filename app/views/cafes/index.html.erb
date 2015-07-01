@@ -5,6 +5,8 @@
   <% end %>
 </ul>
 
+<%= button_to "Create a new cafe", new_cafe_path, :method => :get %>
+
 <h1>Select a Cat to learn about!</h1>
 <ul>
   <% @cats.each do |cat| %>
