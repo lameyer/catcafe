@@ -23,6 +23,12 @@ class Cat < ActiveRecord::Base
     visit = Visit.create(cat: self, cafe: cafe, entered_at: Time.now)
   end
 
+  def time_to_switch?
+    !current_visit || current_visit.elapsed_duration > 30 || current_visit.elapsed_duration > rand(5..30)
+  end
+
+  def switch_cafe_if_time!
+    switch_cafe!(Cafe.order("random()").first) if time_to_switch?
   end
 
 end
