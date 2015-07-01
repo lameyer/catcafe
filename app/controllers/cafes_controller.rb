@@ -1,7 +1,7 @@
 class CafesController < ApplicationController
   def index
-    @cafes = Cafe.all
-    @cats = Cat.all
+    @cafes = Cafe.all.order(name: :asc)
+    @cats = Cat.all.order(name: :asc)
   end
 
   def show
