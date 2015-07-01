@@ -11,10 +11,10 @@
     </li>
   <% end %>
   <li>Total number of cat visits: <%= @cafe.visits.count %></li>
-  <% if @cafe.lifetime_cats.count > 0 %>
+  <% if @cafe.visited_cats.count > 0 %>
     <li><p>Number of visits per cat:</p>
       <ul>
-        <% @cafe.lifetime_cats.each do |cat| %>
+        <% @cafe.visited_cats.each do |cat| %>
         <li><%= link_to cat.name, cat %>: <%= cat.visits_to_cafe(@cafe).count %></li>
         <% end %>
       </ul>
