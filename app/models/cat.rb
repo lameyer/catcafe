@@ -1,5 +1,5 @@
 class Cat < ActiveRecord::Base
-  has_many :visits
+  has_many :visits, dependent: :destroy
   has_many :visited_cafes, -> { uniq }, through: :visits, source: :cafe
 
   def current_cafe

@@ -21,4 +21,6 @@
   <% end %>
 </ul>
 
-<%= button_to "Edit Cat", edit_cat_path, :method => :get %>
+<%= button_to "Edit Cat", edit_cat_path(@cat), method: :get %>
+
+<%= button_to "Delete Cat", @cat, method: :delete, :"data-confirm" => "Are you sure? This will irreversibly delete this cat and all its visits." %>

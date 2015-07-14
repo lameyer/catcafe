@@ -23,6 +23,12 @@ class CatsController < ApplicationController
     redirect_to @cat
   end
 
+  def destroy
+    @cat = Cat.find(params[:id])
+    @cat.destroy
+    redirect_to cafes_path
+  end
+
   private
 
   def cat_params
