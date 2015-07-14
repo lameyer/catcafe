@@ -21,3 +21,7 @@
     </li>
   <% end %>
 </ul>
+
+<%= button_to "Edit Cafe", edit_cafe_path(@cafe), method: :get %>
+
+<%= button_to "Delete Cafe", @cafe, method: :delete, :"data-confirm" => "Are you sure? This will irreversibly delete this cafe and all its visits." %>

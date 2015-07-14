@@ -17,6 +17,22 @@ class CafesController < ApplicationController
     redirect_to @cafe
   end
 
+  def edit
+    @cafe = Cafe.find(params[:id])
+  end
+
+  def update
+    @cafe = Cafe.find(params[:id])
+    @cafe.update(cafe_params)
+    redirect_to @cafe
+  end
+
+  def destroy
+    @cafe = Cafe.find(params[:id])
+    @cafe.destroy
+    redirect_to cafes_path
+  end
+
   private
 
   def cafe_params
