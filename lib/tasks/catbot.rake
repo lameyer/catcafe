@@ -8,4 +8,11 @@ namespace :catbot do
 
   end
 
+  task delete_old_visits: :environment do
+
+    visits = Visit.where("visits.exited_at < ?", 1.day.ago.beginning_of_day)
+    visits.destroy_all
+
+  end
+
 end
