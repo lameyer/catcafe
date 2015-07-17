@@ -9,7 +9,7 @@
   <% if @cat.current_cafe %>
     <li>Current cafe: <%= link_to @cat.current_cafe.name, @cat.current_cafe %></li>
   <% end %>
-  <li>Total number of cafe visits: <%= @cat.visits.count %></li>
+  <li>Number of cafes visited today: <%= @cat.visits.count %></li>
   <% if @cat.visits.count > 0 %>
     <li><p>Number of visits per cafe:</p>
       <ul>
