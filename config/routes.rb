@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :cafes
+  resources :cafes do
+    resources :cafe_items
+  end
+
   resources :cats
 
   root 'cafes#index'

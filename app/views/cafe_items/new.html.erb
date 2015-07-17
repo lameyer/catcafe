@@ -1,0 +1,12 @@
+<h1>Add an Item to <%= @cafe.name %></h1>
+
+<ul>
+  <% @items.each do |item| %>
+  <li>
+    <%= item.name %>
+    <%= link_to "Add", cafe_cafe_items_path(@cafe, item_id: item.id), :method => :post %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Cafe", @cafe %>

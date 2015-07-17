@@ -10,6 +10,18 @@
       </ul>
     </li>
   <% end %>
+  <% if @cafe.cafe_items.count > 0 %>
+    <li><p>Items:</p>
+      <ul>
+        <% @cafe.cafe_items.each do |cafe_item| %>
+        <li>
+          <%= cafe_item.item.name %>
+          <%= link_to "Remove", [@cafe, cafe_item], method: :delete, :"data-confirm" => "Are you sure? This will irreversibly delete this item from #{@cafe.name}."%>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
   <li>Total number of cat visits: <%= @cafe.visits.count %></li>
   <% if @cafe.visited_cats.count > 0 %>
     <li><p>Number of visits per cat:</p>
@@ -21,6 +33,8 @@
     </li>
   <% end %>
 </ul>
+
+<%= button_to "Add Items to Cafe", new_cafe_cafe_item_path(@cafe), method: :get %>
 
 <%= button_to "Edit Cafe", edit_cafe_path(@cafe), method: :get %>
 
