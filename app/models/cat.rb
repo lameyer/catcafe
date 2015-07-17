@@ -36,4 +36,8 @@ class Cat < ActiveRecord::Base
     switch_cafe!(cafes.first)
   end
 
+  def possessive
+    if gender == "f" then "her" else "his" end
+  end
+
 end

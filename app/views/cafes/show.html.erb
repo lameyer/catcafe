@@ -16,7 +16,7 @@
         <% @cafe.cafe_items.each do |cafe_item| %>
         <li>
           <%= cafe_item.item.name %>
-          <%= link_to "Remove", [@cafe, cafe_item], method: :delete, :"data-confirm" => "Are you sure? This will irreversibly delete this item from #{@cafe.name}."%>
+          <%= link_to "Remove", [@cafe, cafe_item], method: :delete %>
         </li>
         <% end %>
       </ul>
@@ -38,4 +38,4 @@
 
 <%= button_to "Edit Cafe", edit_cafe_path(@cafe), method: :get %>
 
-<%= button_to "Delete Cafe", @cafe, method: :delete, :"data-confirm" => "Are you sure? This will irreversibly delete this cafe and all its visits." %>
+<%= button_to "Delete Cafe", @cafe, method: :delete, :"data-confirm" => "Are you sure? This will allow the bank to irreversibly foreclose on #{@cafe.name} and all its visits." %>
