@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-#make heroku work
+# make heroku work
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
@@ -46,3 +46,6 @@ group :development, :test do
   gem 'spring'
 end
 
+# authentication
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
