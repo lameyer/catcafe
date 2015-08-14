@@ -2,7 +2,7 @@
   <h1>Sign in to create a cafe!</h1>
 <% else %>
 
-  <% if current_user.cafes %>
+  <% if current_user.cafes.any? %>
     <h1>Your Café<% if current_user.cafes.length > 1 %>s<% end %>!</h1>
     <ul>
       <% current_user.cafes.each do |cafe| %>
@@ -11,7 +11,7 @@
     </ul>
   <% end %>
 
-  <% if !current_user.cafes || current_user.id == 1 %>
+  <% if !current_user.cafes.any? || current_user.id == 1 %>
     <%= button_to "Create a new cafe", new_cafe_path, :method => :get %>
   <% end %>
 
