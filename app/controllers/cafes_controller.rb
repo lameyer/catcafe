@@ -13,7 +13,9 @@ class CafesController < ApplicationController
   end
 
   def create
-    @cafe = Cafe.create(cafe_params)
+    @cafe = Cafe.new(cafe_params)
+    @cafe.user = current_user
+    @cafe.save!
     redirect_to @cafe
   end
 
