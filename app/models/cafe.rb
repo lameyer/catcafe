@@ -4,4 +4,5 @@ class Cafe < ActiveRecord::Base
   has_many :current_cats, -> { where("visits.exited_at"=> nil) }, through: :visits, source: :cat
   has_many :cafe_items, dependent: :destroy
   has_many :current_items, through: :cafe_items, source: :item
+  belongs_to :user
 end

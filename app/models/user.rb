@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :cafes, dependent: :destroy
+
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create
     user.name = auth.info.name
@@ -7,4 +9,5 @@ class User < ActiveRecord::Base
     user.save!
     user
   end
+
 end
