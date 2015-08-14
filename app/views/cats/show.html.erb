@@ -7,12 +7,8 @@
   <li>Color: <%= @cat.color %></li>
   <li>Personality: <%= @cat.personality %></li>
   <% if @cat.current_cafe %>
-    <li>Current cafe:
-      <% if @cat.current_cafe.user_id == current_user.id %>
-        <%= link_to @cat.current_cafe.name, @cat.current_cafe %>
-      <% else %>
-        <%= @cat.current_cafe.name %>
-      <% end %>
+    <li>Current cafe:&nbsp;
+      <%= link_to_if @cat.current_cafe.user_id == current_user.id, @cat.current_cafe.name, @cat.current_cafe %>
       </li>
   <% end %>
   <li>Number of cafes visited today: <%= @cat.visits.count %></li>
@@ -21,11 +17,7 @@
       <ul>
         <% @cat.visited_cafes.each do |cafe| %>
         <li>
-          <% if cafe.user_id == current_user.id %>
-            <%= link_to cafe.name, cafe %>:&nbsp;
-          <% else %>
-            <%= cafe.name %>:&nbsp;
-          <% end %>
+          <%= link_to_if cafe.user_id == current_user.id, cafe.name, cafe %>:&nbsp;
           <%= @cat.visits_to_cafe(cafe).count %>
         </li>
         <% end %>
