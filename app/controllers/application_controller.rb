@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def ensure_admin
+    redirect_to root_path unless current_user.id == 1
+  end
+
+  def ensure_logged_in
+    redirect_to root_path unless current_user
+  end
+
 end

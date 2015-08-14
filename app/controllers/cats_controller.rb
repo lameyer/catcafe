@@ -1,34 +1,31 @@
 class CatsController < ApplicationController
+  before_action :ensure_logged_in
+  before_action :ensure_admin, except: :show
 
   def show
     @cat = Cat.find(params[:id])
   end
 
   def new
-    redirect_to root_path unless current_user.id == 1
     @cat = Cat.new
   end
 
   def create
-    redirect_to root_path unless current_user.id == 1
     @cat = Cat.create(cat_params)
     redirect_to @cat
   end
 
   def edit
-    redirect_to root_path unless current_user.id == 1
     @cat = Cat.find(params[:id])
   end
 
   def update
-    redirect_to root_path unless current_user.id == 1
     @cat = Cat.find(params[:id])
     @cat.update(cat_params)
     redirect_to @cat
   end
 
   def destroy
-    redirect_to root_path unless current_user.id == 1
     @cat = Cat.find(params[:id])
     @cat.destroy
     redirect_to cafes_path
