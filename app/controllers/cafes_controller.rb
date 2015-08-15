@@ -18,16 +18,23 @@ class CafesController < ApplicationController
   def create
     @cafe = Cafe.new(cafe_params)
     @cafe.user = current_user
-    @cafe.save!
-    redirect_to @cafe
+    if @cafe.save
+      redirect_to @cafe
+    else
+      render action: :new
+    end
   end
 
   def edit
   end
 
   def update
-    @cafe.update(cafe_params)
-    redirect_to @cafe
+    @cafe.assign_attributes(cafe_params)
+    if @cafe.save
+      redirect_to @cafe
+    else
+      render action: :edit
+    end
   end
 
   def destroy

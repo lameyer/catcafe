@@ -2,6 +2,8 @@ class Cat < ActiveRecord::Base
   has_many :visits, dependent: :destroy
   has_many :visited_cafes, -> { uniq }, through: :visits, source: :cafe
 
+  validates :name, :age, :gender, :breed, :color, :personality, presence: true
+
   def current_cafe
     current_visit.cafe if current_visit
   end

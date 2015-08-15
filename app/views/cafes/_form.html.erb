@@ -1,9 +1,13 @@
+<div class="error">
+  <%= @cafe.errors.full_messages.first if @cafe.errors.any? %>
+</div>
+
 <%= form_for(cafe) do |f| %>
-  <p>
+  <div class="form-field">
     <%= label_tag(:name, "Name:") %>
     <%= f.text_field :name %>
-  </p>
-  <p>
+  </div>
+  <div class="form-field">
     <%= f.submit "Save" %>
-  </p>
+  </div>
 <% end %>

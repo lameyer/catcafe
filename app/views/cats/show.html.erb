@@ -13,7 +13,7 @@
   <% end %>
   <li>Number of cafes visited today: <%= @cat.visits.count %></li>
   <% if @cat.visits.count > 0 %>
-    <li><p>Number of visits per cafe:</p>
+    <li>Number of visits per cafe:
       <ul>
         <% @cat.visited_cafes.each do |cafe| %>
         <li>

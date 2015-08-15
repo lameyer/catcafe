@@ -1,32 +1,36 @@
+<div class="error">
+  <%= @cat.errors.full_messages.first if @cat.errors.any? %>
+</div>
+
 <%= form_for(cat) do |f| %>
-  <p>
+  <div class="form-field">
     <%= label_tag(:name, "Name:") %>
     <%= f.text_field :name %>
-  </p>
-  <p>
+  </div class="form-field">
+  <div class="form-field">
     <%= label_tag(:age, "Age:") %>
     <%= f.number_field :age %>
-  </p>
-  <p>
+  </div class="form-field">
+  <div class="form-field">
     <%= label_tag(:gender, "Gender:") %>
     <%= f.radio_button(:gender, "f") %>
     <%= label_tag(:gender, "Female") %>
     <%= f.radio_button(:gender, "m") %>
     <%= label_tag(:gender, "Male") %>
-  </p>
-  <p>
+  </div class="form-field">
+  <div class="form-field">
     <%= label_tag(:breed, "Breed:") %>
     <%= f.text_field :breed %>
-  </p>
-  <p>
+  </div class="form-field">
+  <div class="form-field">
     <%= label_tag(:color, "Color:") %>
     <%= f.text_field :color %>
- </p>
- <p>
+ </div class="form-field">
+ <div class="form-field">
     <%= label_tag(:personality, "Personality:") %>
     <%= f.text_field :personality %>
-  </p>
-  <p>
+  </div class="form-field">
+  <div class="form-field">
     <%= f.submit "Save" %>
-  </p>
+  </div class="form-field">
 <% end %>

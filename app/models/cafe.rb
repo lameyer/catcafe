@@ -5,4 +5,6 @@ class Cafe < ActiveRecord::Base
   has_many :cafe_items, dependent: :destroy
   has_many :current_items, through: :cafe_items, source: :item
   belongs_to :user
+
+  validates :name, presence: true
 end

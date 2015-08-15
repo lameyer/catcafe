@@ -2,7 +2,7 @@
 
 <ul>
   <% if @cafe.current_cats.count > 0 %>
-    <li><p>Current cats:</p>
+    <li>Current cats:
       <ul>
         <% @cafe.current_cats.each do |cat| %>
         <li><%= link_to cat.name, cat %></li>
@@ -11,7 +11,7 @@
     </li>
   <% end %>
   <% if @cafe.cafe_items.count > 0 %>
-    <li><p>Items:</p>
+    <li>Items:
       <ul>
         <% @cafe.cafe_items.each do |cafe_item| %>
         <li>
@@ -24,7 +24,7 @@
   <% end %>
   <li>Number of cat visits today: <%= @cafe.visits.count %></li>
   <% if @cafe.visited_cats.count > 0 %>
-    <li><p>Number of visits per cat:</p>
+    <li>Number of visits per cat:
       <ul>
         <% @cafe.visited_cats.each do |cat| %>
         <li><%= link_to cat.name, cat %>: <%= cat.visits_to_cafe(@cafe).count %></li>
