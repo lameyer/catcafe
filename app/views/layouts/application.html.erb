@@ -10,6 +10,7 @@
 
   <div id="user-widget">
     <% if current_user %>
+      <%= image_tag current_user.image, size: "40x40"%>
       Welcome <strong><%= current_user.name %></strong>!
       <%= link_to "Sign out", signout_path, id: "sign_out" %>
     <% else %>
