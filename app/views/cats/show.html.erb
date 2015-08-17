@@ -8,7 +8,7 @@
   <li>Personality: <%= @cat.personality %></li>
   <% if @cat.current_cafe %>
     <li>Current cafe:&nbsp;
-      <%= link_to_if @cat.current_cafe.user_id == current_user.id, @cat.current_cafe.name, @cat.current_cafe %>
+      <%= link_to_if @cat.current_cafe.user_id == current_user.id || current_user.id == 1, @cat.current_cafe.name, @cat.current_cafe %>
       </li>
   <% end %>
   <li>Number of cafes visited today: <%= @cat.visits.count %></li>
@@ -17,7 +17,7 @@
       <ul>
         <% @cat.visited_cafes.each do |cafe| %>
         <li>
-          <%= link_to_if cafe.user_id == current_user.id, cafe.name, cafe %>:&nbsp;
+          <%= link_to_if cafe.user_id == current_user.id || current_user.id == 1, cafe.name, cafe %>:&nbsp;
           <%= @cat.visits_to_cafe(cafe).count %>
         </li>
         <% end %>
@@ -29,5 +29,5 @@
 <% if current_user.id == 1 %>
   <%= button_to "Edit Cat", edit_cat_path(@cat), method: :get %>
 
-<%= button_to "Delete Cat", @cat, method: :delete, :"data-confirm" => "Are you sure? This will irreversibly send #{@cat.name} and all #{@cat.possessive} visits to a farm upstate." %>
+  <%= button_to "Delete Cat", @cat, method: :delete, :"data-confirm" => "Are you sure? This will irreversibly send #{@cat.name} and all #{@cat.possessive} visits to a farm upstate." %>
 <% end %>

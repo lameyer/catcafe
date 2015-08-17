@@ -1,6 +1,6 @@
 class CafesController < ApplicationController
   before_action :ensure_logged_in, except: :index
-  before_action :ensure_cafe_owner, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_cafe_owner_or_admin, only: [:show, :edit, :update, :destroy]
   before_action :ensure_can_make_cafe, only: [:new, :create]
 
   def index
@@ -48,9 +48,9 @@ class CafesController < ApplicationController
     params.require(:cafe).permit(:name)
   end
 
-  def ensure_cafe_owner
+  def ensure_cafe_owner_or_admin
     @cafe = Cafe.find(params[:id])
-    redirect_to root_path unless @cafe.user == current_user
+    redirect_to root_path unless @cafe.user == current_user || current_user.id == 1
   end
 
   def ensure_can_make_cafe
