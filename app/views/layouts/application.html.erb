@@ -24,6 +24,10 @@
     <p>Balance: <%= format_money(current_user.balance) %></p>
   <% end %>
 
+  <% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% end %>
+
 <%= yield %>
 
 </body>

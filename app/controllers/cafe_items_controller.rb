@@ -8,13 +8,20 @@ class CafeItemsController < ApplicationController
   end
 
   def create
-    @cafe_item = CafeItem.create(cafe_items_params)
-    redirect_to @cafe
+    @cafe_item = CafeItem.new(cafe_items_params)
+    if @cafe_item.save
+      redirect_to @cafe
+    else
+      flash[:error] = @cafe_item.errors[:base].join
+      redirect_to new_cafe_cafe_item_path
+    end
   end
 
   def destroy
     @cafe_item = CafeItem.find(params[:id])
-    @cafe_item.destroy
+    if !@cafe_item.destroy
+      flash[:error] = @cafe_item.errors[:base].join
+    end
     redirect_to @cafe
   end
 

@@ -11,13 +11,13 @@
             <em>being used by</em>
             <%= link_to cafe_item.current_cat.name, cafe_item.current_cat %>
           <% end %>
-          <%= link_to "Remove Item", [@cafe, cafe_item], method: :delete %>
+          <%= link_to "Sell Item", [@cafe, cafe_item], method: :delete %>
         </li>
         <% end %>
       </ul>
     </li>
   <% else %>
-    Add items to this cafe to attract the nice cats!
+    Buy items for this cafe to attract the nice cats!
   <% end %>
   <li>Number of cat visits today: <%= @cafe.cafe_visits.count %></li>
   <% if @cafe.visited_cats.count > 0 %>
@@ -31,7 +31,7 @@
   <% end %>
 </ul>
 
-<%= button_to "Add Items to Cafe", new_cafe_cafe_item_path(@cafe), method: :get %>
+<%= button_to "Buy Items", new_cafe_cafe_item_path(@cafe), method: :get %>
 
 <%= button_to "Edit Cafe", edit_cafe_path(@cafe), method: :get %>
 
