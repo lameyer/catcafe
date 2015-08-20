@@ -78,7 +78,10 @@ class Cat < ActiveRecord::Base
   end
 
   def leave_current_cafe_item!
-    current_cafe_item_visit.update(exited_at: Time.now) if current_cafe_item_visit
+    if current_cafe_item_visit
+      current_cafe_item.pay_user
+      current_cafe_item_visit.update(exited_at: Time.now)
+    end
   end
 
   def visit_cafe!(cafe)

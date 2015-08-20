@@ -30,6 +30,10 @@ class CafeItem < ActiveRecord::Base
     user.update!(balance: user.balance + (item.purchase_price.to_f / 2).round)
   end
 
+  def pay_user
+    user.update!(balance: user.balance + item.visit_price)
+  end
+
   def balance_cannot_be_less_than_price
     errors[:base] << "You don't have enough money to buy #{item.name}!" if user.balance < item.purchase_price
   end
