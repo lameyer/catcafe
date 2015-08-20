@@ -20,6 +20,10 @@
 
   <%= link_to "Home", root_path %>
 
+  <% if current_user %>
+    <p>Balance: <%= format_money(current_user.balance) %></p>
+  <% end %>
+
 <%= yield %>
 
 </body>
