@@ -1,6 +1,9 @@
 class Cat < ActiveRecord::Base
-  has_many :visits, dependent: :destroy
-  has_many :visited_cafes, -> { uniq }, through: :visits, source: :cafe
+  has_many :cafe_visits, dependent: :destroy
+  has_many :visited_cafes, -> { uniq }, through: :cafe_visits, source: :cafe
+  has_many :cafe_item_visits, dependent: :destroy
+  has_many :visted_cafe_items, -> { uniq }, through: :cafe_item_visits, source: :cafe_item
+  has_many :visited_items, -> { uniq }, through: :visited_cafe_items, source: :item
 
   validates :name, :age, :gender, :breed, :color, :personality, presence: true
 
@@ -9,11 +12,11 @@ class Cat < ActiveRecord::Base
   end
 
   def current_visit
-    visits.where("visits.exited_at"=> nil).first
+    cafe_visits.where("cafe_visits.exited_at"=> nil).first
   end
 
   def visits_to_cafe(cafe)
-    visits.where("visits.cafe_id"=> cafe)
+    cafe_visits.where("cafe_visits.cafe_id"=> cafe)
   end
 
   def leave_current_cafe!
@@ -22,7 +25,7 @@ class Cat < ActiveRecord::Base
 
   def switch_cafe!(cafe)
     leave_current_cafe!
-    visit = Visit.create(cat: self, cafe: cafe, entered_at: Time.now)
+    cafe_visit = CafeVisit.create(cat: self, cafe: cafe, entered_at: Time.now)
   end
 
   def time_to_switch?

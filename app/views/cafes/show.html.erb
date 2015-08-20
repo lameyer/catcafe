@@ -22,7 +22,7 @@
       </ul>
     </li>
   <% end %>
-  <li>Number of cat visits today: <%= @cafe.visits.count %></li>
+  <li>Number of cat visits today: <%= @cafe.cafe_visits.count %></li>
   <% if @cafe.visited_cats.count > 0 %>
     <li>Number of visits per cat:
       <ul>

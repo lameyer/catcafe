@@ -1,6 +1,7 @@
-class Visit < ActiveRecord::Base
+class CafeVisit < ActiveRecord::Base
   belongs_to :cat
   belongs_to :cafe
+  has_many :cafe_item_visits
 
   # returns minutes
   def elapsed_duration

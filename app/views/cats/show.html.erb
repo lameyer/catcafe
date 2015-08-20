@@ -11,8 +11,8 @@
       <%= link_to_if @cat.current_cafe.user_id == current_user.id || current_user.id == 1, @cat.current_cafe.name, @cat.current_cafe %>
       </li>
   <% end %>
-  <li>Number of cafes visited today: <%= @cat.visits.count %></li>
-  <% if @cat.visits.count > 0 %>
+  <li>Number of cafes visited today: <%= @cat.cafe_visits.count %></li>
+  <% if @cat.cafe_visits.count > 0 %>
     <li>Number of visits per cafe:
       <ul>
         <% @cat.visited_cafes.each do |cafe| %>

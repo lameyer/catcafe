@@ -11,14 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815202213) do
+ActiveRecord::Schema.define(version: 20150820023946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cafe_item_visits", force: :cascade do |t|
+    t.integer  "cat_id"
+    t.integer  "cafe_item_id"
+    t.integer  "cafe_visit_id"
+    t.datetime "entered_at"
+    t.datetime "exited_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "cafe_items", force: :cascade do |t|
     t.integer  "cafe_id"
     t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cafe_visits", force: :cascade do |t|
+    t.integer  "cat_id"
+    t.integer  "cafe_id"
+    t.datetime "entered_at"
+    t.datetime "exited_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,15 +76,6 @@ ActiveRecord::Schema.define(version: 20150815202213) do
     t.datetime "updated_at",       null: false
     t.string   "first_name"
     t.string   "image"
-  end
-
-  create_table "visits", force: :cascade do |t|
-    t.integer  "cat_id"
-    t.integer  "cafe_id"
-    t.datetime "entered_at"
-    t.datetime "exited_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
