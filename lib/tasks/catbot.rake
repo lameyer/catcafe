@@ -10,8 +10,10 @@ namespace :catbot do
 
   task delete_old_visits: :environment do
 
-    visits = Visit.where("visits.exited_at < ?", 1.day.ago.beginning_of_day)
-    visits.delete_all
+    cafe_visits = CafeVisit.where("cafe_visits.exited_at < ?", 1.day.ago.beginning_of_day)
+    cafe_item_visits = CafeItemVisit.where("cafe_item_visits.exited_at < ?", 1.day.ago.beginning_of_day)
+    cafe_visits.delete_all
+    cafe_item_visits.delete_all
 
   end
 
