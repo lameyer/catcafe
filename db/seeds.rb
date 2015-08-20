@@ -12,9 +12,9 @@ Cat.find_or_create_by({ name: 'Fluffles', age: 9, gender: 'f', breed: 'long-hair
 
 Cafe.find_or_create_by({ name: 'So Nicé Café'})
 
-Item.find_or_create_by({ name: "Red Ball"})
-Item.find_or_create_by({ name: "Carboard Box"})
-Item.find_or_create_by({ name: "Cat Nip"})
-Item.find_or_create_by({ name: "Old Slipper"})
-Item.find_or_create_by({ name: "Mouse"})
-Item.find_or_create_by({ name: "Feather Tassle"})
+Item.find_or_create_by({ name: "Coffee", purchase_price: 1000, visit_price: 300, min_visit_duration: 5, max_visit_duration: 20})
+Item.find_or_create_by({ name: "Croissant", purchase_price: 5000, visit_price: 400, min_visit_duration: 15, max_visit_duration: 30})
+Item.find_or_create_by({ name: "Yarn Ball", purchase_price: 3000, visit_price: 300, min_visit_duration: 10, max_visit_duration: 25})
+Item.find_or_create_by({ name: "Cat Nip", purchase_price: 800, visit_price: 50, min_visit_duration: 5, max_visit_duration: 15})
+
+
