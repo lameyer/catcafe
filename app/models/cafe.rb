@@ -8,4 +8,9 @@ class Cafe < ActiveRecord::Base
   belongs_to :user
 
   validates :name, presence: true
+
+  def has_room?
+    current_cats.length < current_items.length
+  end
+
 end
