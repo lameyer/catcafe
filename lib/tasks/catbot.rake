@@ -23,4 +23,11 @@ namespace :catbot do
 
   end
 
+  task reset_all_visits: :environment do
+
+    CafeVisit.delete_all
+    CafeItemVisit.delete_all
+
+  end
+
 end
