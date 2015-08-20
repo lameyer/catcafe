@@ -1,26 +1,23 @@
 <h1><%= @cafe.name %></h1>
 
 <ul>
-  <% if @cafe.current_cats.count > 0 %>
-    <li>Current cats:
-      <ul>
-        <% @cafe.current_cats.each do |cat| %>
-        <li><%= link_to cat.name, cat %></li>
-        <% end %>
-      </ul>
-    </li>
-  <% end %>
   <% if @cafe.cafe_items.count > 0 %>
     <li>Items:
       <ul>
         <% @cafe.cafe_items.each do |cafe_item| %>
         <li>
           <%= cafe_item.item.name %>
-          <%= link_to "Remove", [@cafe, cafe_item], method: :delete %>
+          <% if cafe_item.current_cat %>
+            <em>being used by</em>
+            <%= link_to cafe_item.current_cat.name, cafe_item.current_cat %>
+          <% end %>
+          <%= link_to "Remove Item", [@cafe, cafe_item], method: :delete %>
         </li>
         <% end %>
       </ul>
     </li>
+  <% else %>
+    Add items to this cafe to attract the nice cats!
   <% end %>
   <li>Number of cat visits today: <%= @cafe.cafe_visits.count %></li>
   <% if @cafe.visited_cats.count > 0 %>
