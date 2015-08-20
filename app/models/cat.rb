@@ -99,7 +99,7 @@ class Cat < ActiveRecord::Base
 
   def time_to_leave_cafe_item?
     !current_cafe_item_visit ||
-    current_cafe_item_visit.elapsed_duration > rand(current_cafe_item.min_visit_duration..current_cafe_item.max_visit_duration)
+    current_cafe_item_visit.elapsed_duration > rand(current_cafe_item.item.min_visit_duration..current_cafe_item.item.max_visit_duration)
   end
 
   def possessive
