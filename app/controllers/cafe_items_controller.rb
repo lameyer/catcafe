@@ -12,7 +12,7 @@ class CafeItemsController < ApplicationController
     if @cafe_item.save
       redirect_to @cafe
     else
-      flash[:error] = @cafe_item.errors[:base].join
+      flash[:error] = @cafe_item.errors.values.flatten.join
       redirect_to new_cafe_cafe_item_path
     end
   end
@@ -20,7 +20,7 @@ class CafeItemsController < ApplicationController
   def destroy
     @cafe_item = CafeItem.find(params[:id])
     if !@cafe_item.destroy
-      flash[:error] = @cafe_item.errors[:base].join
+      flash[:error] = @cafe_item.errors.values.flatten.join
     end
     redirect_to @cafe
   end
