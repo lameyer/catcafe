@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'cafes#index'
 
+  post 'cafes/:id/clean_litter_box' => 'cafes#clean_litter_box', as: :clean_litter_box
+
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]

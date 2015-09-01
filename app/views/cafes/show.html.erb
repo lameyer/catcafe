@@ -29,7 +29,10 @@
       </ul>
     </li>
   <% end %>
+  <li>Litter Box Poops: <%= @cafe.poop_count %>/<%= @cafe.litter_box_capacity %></li>
 </ul>
+
+<%= button_to "Clean Litter Box", clean_litter_box_url(id: @cafe.id), method: :post %>
 
 <%= button_to "Buy Items", new_cafe_cafe_item_path(@cafe), method: :get %>
 

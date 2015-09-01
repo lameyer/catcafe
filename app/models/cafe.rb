@@ -10,7 +10,7 @@ class Cafe < ActiveRecord::Base
   validates :name, presence: true
 
   def has_room?
-    current_cats.length < current_items.length
+    current_cats.length < current_items.length && poop_count < litter_box_capacity
   end
 
 end

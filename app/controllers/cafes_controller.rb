@@ -42,6 +42,12 @@ class CafesController < ApplicationController
     redirect_to cafes_path
   end
 
+  def clean_litter_box
+    @cafe = Cafe.find(params[:id])
+    @cafe.update(poop_count: 0)
+    redirect_to @cafe
+  end
+
   private
 
   def cafe_params

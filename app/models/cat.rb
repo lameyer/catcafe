@@ -43,6 +43,7 @@ class Cat < ActiveRecord::Base
     leave_current_cafe_item! if time_to_leave_cafe_item?
   end
 
+  # find a new cafe if cat has no current cafe
   def find_cafe!
     return if current_cafe
     cafes = Cafe.order("random()")
@@ -57,6 +58,7 @@ class Cat < ActiveRecord::Base
     end
   end
 
+  # find a new item in current cafe if cat has no current item
   def find_cafe_item!
     return if current_cafe_item
     return if !current_cafe
@@ -73,8 +75,11 @@ class Cat < ActiveRecord::Base
   end
 
   def leave_current_cafe!
-    current_cafe_visit.update(exited_at: Time.now) if current_cafe_visit
-    leave_current_cafe_item!
+    if current_cafe_visit
+      current_cafe.increment!(:poop_count)
+      current_cafe_visit.update(exited_at: Time.now)
+      leave_current_cafe_item!
+    end
   end
 
   def leave_current_cafe_item!
