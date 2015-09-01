@@ -5,7 +5,7 @@
   <% if current_user.cafes.any? %>
     <h1>Your Café<% if current_user.cafes.length > 1 %>s<% end %>!</h1>
     <ul>
-      <% current_user.cafes.each do |cafe| %>
+      <% current_user.cafes.order(name: :asc).each do |cafe| %>
         <li>
           <%= link_to cafe.name, cafe %>
           <%= cafe.current_cats.count %>/<%= cafe.cafe_items.count %> Cats

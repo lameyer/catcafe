@@ -4,7 +4,6 @@ class CafesController < ApplicationController
   before_action :ensure_can_make_cafe, only: [:new, :create]
 
   def index
-    @cafes = Cafe.all.order(name: :asc)
     @cats = Cat.all.order(name: :asc)
   end
 
