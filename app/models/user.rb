@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     user.image = auth.info.image
     user.oauth_token = auth.credentials.token
     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    user.balance = 2000 if user.new_record?
     user.save!
     user
   end
