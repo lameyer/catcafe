@@ -4,13 +4,9 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-gerard:
-  name: Gerard
-  age: 2
-  gender: m
-  breed: scottish wild cat
-  color: brown
-  personality: ladies man
+rich:
+  name: Rich McRicherson
+  balance: 100000
 
 two: {}
 #  column: value
